@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy Side
+  - Colonel Sanders
+  - Enemy
   layers:
   - Default
   - TransparentFX

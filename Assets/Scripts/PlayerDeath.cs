@@ -20,7 +20,10 @@ public class PlayerDeath : MonoBehaviour
 	
     void OnTriggerEnter(Collider collider)
 	{
-		if (collider.gameObject.CompareTag("Enemy Side"))  // detects if player collides with the side of an enemy
+		if (collider.gameObject.CompareTag("Colonel Sanders"))  // detects if player is hit by colonel sanders
+			Dead(2);
+
+		if (collider.gameObject.CompareTag("Enemy"))  // detects if player collides with the side of an enemy
 			Dead(2);
 	}
 	
