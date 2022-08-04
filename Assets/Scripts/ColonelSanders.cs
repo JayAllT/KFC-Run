@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColonelSanders : MonoBehaviour
 {
-    private float speed = 12.0f;
+    private float speed = 12.85f;
 
 	public static float z;
 	

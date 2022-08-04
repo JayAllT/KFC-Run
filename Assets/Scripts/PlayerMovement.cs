@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-	[SerializeField] Rigidbody body;
+	[SerializeField] Transform groundCheck;
+	[SerializeField] LayerMask ground;
+	
+	Rigidbody body;
 
 	private Vector3 velocity;
+	private Vector3 zero;
 
 	private float jumpForce = 8.5f;
 	private float speed = 14.0f;
@@ -15,13 +19,14 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
 		body = GetComponent<Rigidbody>();
+		zero = new Vector3(0, 0, 0);
     }
 
     void Update()
     {
         velocity = body.velocity;
 		
-		if (Input.GetKeyDown("space"))
+		if (Input.GetKeyDown("space") && Physics.CheckSphere(groundCheck.position, 0.5f, ground))
 			velocity.y = jumpForce;
 		
 		velocity.x = Input.GetKey("left") ? speed * -1 : Input.GetKey("right") ? speed : velocity.x / (1 + decSpeed * Time.deltaTime);
