@@ -27,10 +27,12 @@ public class PlayerMovement : MonoBehaviour
         velocity = body.velocity;
 		
 		if (Input.GetKeyDown("space") && Physics.CheckSphere(groundCheck.position, 0.5f, ground))
+		{
+			Debug.Log("aaa");
 			velocity.y = jumpForce;
-		
-		velocity.x = Input.GetKey("left") ? speed * -1 : Input.GetKey("right") ? speed : velocity.x / (1 + decSpeed * Time.deltaTime);
-		velocity.z = Input.GetKey("down") ? speed * -1 : Input.GetKey("up") ? speed : velocity.z / (1 + decSpeed * Time.deltaTime);
+		}
+		velocity.x = Input.GetKey("a") ? speed * -1 : Input.GetKey("d") ? speed : velocity.x / (1 + decSpeed * Time.deltaTime);
+		velocity.z = Input.GetKey("s") ? speed * -1 : Input.GetKey("w") ? speed : velocity.z / (1 + decSpeed * Time.deltaTime);
 
 		body.velocity = velocity;
     }
