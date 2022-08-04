@@ -16,13 +16,13 @@ public class PlayerDeath : MonoBehaviour
 	{
 		if (transform.position.y < -2)
 			Dead(1);
+		
+		if (ColonelSanders.z > transform.position.z)
+			Dead(2);
 	}
 	
     void OnTriggerEnter(Collider collider)
 	{
-		if (collider.gameObject.CompareTag("Colonel Sanders"))  // detects if player is hit by colonel sanders
-			Dead(2);
-
 		if (collider.gameObject.CompareTag("Enemy"))  // detects if player collides with the side of an enemy
 			Dead(2);
 	}
