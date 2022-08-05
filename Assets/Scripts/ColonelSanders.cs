@@ -7,7 +7,7 @@ public class ColonelSanders : MonoBehaviour
 	private Vector3 scale;
 	
     private float speed = 12.85f;
-	private float expand = 0.25f;
+	private float expand = 0.4f;
 
 	public static float z;
 	
