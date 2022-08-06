@@ -10,8 +10,7 @@ public class PlayerDeath : MonoBehaviour
 	BoxCollider boxCollider;
 	Color32 deathImageColor;
 	
-	private bool dead = false;
-	private int oldAlpha = 0;
+	public static bool dead = false;
 	private int deathImageFade = 1000;
 	
 	void Awake()
@@ -62,6 +61,7 @@ public class PlayerDeath : MonoBehaviour
 	IEnumerator Reset(float time)  // reset level after two seconds
 	{
 		yield return new WaitForSeconds(time);
+		dead = false;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 }

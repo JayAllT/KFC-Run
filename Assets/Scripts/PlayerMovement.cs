@@ -11,10 +11,14 @@ public class PlayerMovement : MonoBehaviour
 
 	private Vector3 velocity;
 	private Vector3 zero;
+	private Vector3 deathVelocity;
 
 	private float jumpForce = 8.5f;
 	private float speed = 14.0f;
 	private float decSpeed = 10.0f;
+	private float deathDecSpeed = 1.0f;
+	
+	private bool justDied = false;
 	
     void Start()
     {
@@ -25,13 +29,32 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         velocity = body.velocity;
+
+		// get velocity when player dies
+		if (PlayerDeath.dead && !justDied)
+		{
+			deathVelocity = velocity;
+			justDied = true;
+		}
 		
-		if (Input.GetKeyDown("space") && Physics.CheckSphere(groundCheck.position, 0.5f, ground))
+		else if (PlayerDeath.dead)
+		{
+			deathVelocity.y = velocity.y;  // update y velocity
+			
+			deathVelocity.x = deathVelocity.x / (1 + deathDecSpeed * Time.deltaTime);
+			deathVelocity.z = deathVelocity.z / (1 + deathDecSpeed * Time.deltaTime);
+			
+			velocity = deathVelocity;
+		}
+		
+		// movement
+		if (Input.GetKeyDown("space") && Physics.CheckSphere(groundCheck.position, 0.5f, ground) && !PlayerDeath.dead)
 			velocity.y = jumpForce;
 
-		velocity.x = Input.GetKey("a") ? speed * -1 : Input.GetKey("d") ? speed : velocity.x / (1 + decSpeed * Time.deltaTime);
-		velocity.z = Input.GetKey("s") ? speed * -1 : Input.GetKey("w") ? speed : velocity.z / (1 + decSpeed * Time.deltaTime);
+		velocity.x = Input.GetKey("a") && !PlayerDeath.dead ? speed * -1 : Input.GetKey("d") && !PlayerDeath.dead ? speed : velocity.x / (1 + decSpeed * Time.deltaTime);
+		velocity.z = Input.GetKey("s") && !PlayerDeath.dead ? speed * -1 : Input.GetKey("w") && !PlayerDeath.dead ? speed : velocity.z / (1 + decSpeed * Time.deltaTime);
 
+		// update rigid body velocity
 		body.velocity = velocity;
     }
 }
