@@ -22,8 +22,8 @@ public class PlayerDeath : MonoBehaviour
 	
 	void Update()
 	{
-		if (transform.position.y < -2)  // check if player falls off platform
-			Dead(1.0f);
+		if (transform.position.y < -3)  // check if player falls off platform
+			Dead(0.5f);
 		
 		if (ColonelSanders.z > transform.position.z)  // check if colonel sanders is further than player
 			Dead(1.5f);
