@@ -45,6 +45,12 @@ public class PlayerDeath : MonoBehaviour
 			Dead(1.5f);
 	}
 	
+	void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.CompareTag("Lava Platform"))  // lava platform
+			Dead(1.5f);
+	}
+	
 	void Dead(float time)  // player will fall through floor and level will reset in 2 seconds
 	{
 		if (!dead)

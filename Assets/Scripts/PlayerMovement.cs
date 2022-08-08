@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 		
 		// movement
-		if (Input.GetKeyDown("space") && Physics.CheckSphere(groundCheck.position, 0.5f, ground) && !PlayerDeath.dead)
+		if (Input.GetKeyDown("space") && Physics.CheckSphere(groundCheck.position, 0.65f, ground) && !PlayerDeath.dead)
 			velocity.y = jumpForce;
 
 		velocity.x = Input.GetKey("a") && !PlayerDeath.dead ? speed * -1 : Input.GetKey("d") && !PlayerDeath.dead ? speed : velocity.x / (1 + decSpeed * Time.deltaTime);
