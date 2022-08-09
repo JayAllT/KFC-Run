@@ -12,6 +12,7 @@ public class PlayerDeath : MonoBehaviour
 	
 	public static bool dead = false;
 	private int deathImageFade = 1000;
+	public bool canDie = true;
 	
 	void Awake()
 	{
@@ -22,32 +23,34 @@ public class PlayerDeath : MonoBehaviour
 	
 	void Update()
 	{
-		if (transform.position.y < -3)  // check if player falls off platform
-			Dead(0.5f);
-		
-		if (ColonelSanders.z > transform.position.z)  // check if colonel sanders is further than player
-			Dead(1.5f);
-		
-		// fade death screen
-		if (dead)
-		{
-			if (deathImageColor.a - deathImageFade * Time.deltaTime > 1)
-				deathImageColor.a -= (byte)(deathImageFade * Time.deltaTime);
+		if (canDie)
+			{
+			if (transform.position.y < -3)  // check if player falls off platform
+				Dead(0.5f);
+			
+			if (ColonelSanders.z > transform.position.z)  // check if colonel sanders is further than player
+				Dead(1.5f);
+			
+			// fade death screen
+			if (dead)
+			{
+				if (deathImageColor.a - deathImageFade * Time.deltaTime > 1)
+					deathImageColor.a -= (byte)(deathImageFade * Time.deltaTime);
 
-			deathImage.color = deathImageColor;
+				deathImage.color = deathImageColor;
+			}
 		}
-		
 	}
 	
     void OnTriggerEnter(Collider collider)
 	{
-		if (collider.gameObject.CompareTag("Enemy"))  // detects if player collides with the side of an enemy
+		if (collider.gameObject.CompareTag("Enemy") && canDie)  // detects if player collides with the side of an enemy
 			Dead(1.5f);
 	}
 	
 	void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.CompareTag("Lava Platform"))  // lava platform
+		if (collision.gameObject.CompareTag("Lava Platform") && canDie)  // lava platform
 			Dead(1.5f);
 	}
 	
