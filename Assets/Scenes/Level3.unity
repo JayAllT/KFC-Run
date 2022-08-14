@@ -1590,7 +1590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a339076d9b3a14683e112006f3f8b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hidePlayer: 1
+  hidePlayer: 0
   deathScript: {fileID: 415226028}
   body: {fileID: 415226030}
   cam: {fileID: 569370233}
@@ -1894,7 +1894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a339076d9b3a14683e112006f3f8b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hidePlayer: 0
+  hidePlayer: 1
   deathScript: {fileID: 438891170}
   body: {fileID: 438891168}
   cam: {fileID: 35909478}

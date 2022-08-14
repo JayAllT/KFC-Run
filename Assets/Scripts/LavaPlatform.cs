@@ -14,9 +14,15 @@ public class LavaPlatform : MonoBehaviour
 	private float timer = 0.0f;
 	public static bool lava = true;
 	
+	void Start()
+	{
+		lava = true;
+		timer = 0.0f;
+	}
+	
 	void Update()
 	{
-		boxCollider.enabled = true;  // trigger player collision detection when platform is turned to lava
+		boxCollider.enabled = true;  // trigger player collision detection after platform is turned to lava
 
 		// timer
 		timer += Time.deltaTime;
