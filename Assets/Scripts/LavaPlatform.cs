@@ -12,13 +12,7 @@ public class LavaPlatform : MonoBehaviour
 	
 	private float switchTime = 1.1f;
 	private float timer = 0.0f;
-	public static bool lava = true;
-	
-	void Start()
-	{
-		lava = true;
-		timer = 0.0f;
-	}
+	public bool lava = true;
 	
 	void Update()
 	{
@@ -26,20 +20,23 @@ public class LavaPlatform : MonoBehaviour
 
 		// timer
 		timer += Time.deltaTime;
-		
+
 		if (timer >= switchTime)
 		{
 			lava = !lava;
+
 			timer = 0.0f;
+
+			if (lava)
+				boxCollider.enabled = false;  // trigger player collision detection when platform is turned to lava
 		}
-		
+
 		// update material
 		if (lava)
 		{
 			platformRenderer.material = lavaMaterial;
 			platformRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 			platformRenderer.receiveShadows = false;
-			boxCollider.enabled = false;  // trigger player collision detection when platform is turned to lava
 			tag = "Lava Platform";
 		}
 		

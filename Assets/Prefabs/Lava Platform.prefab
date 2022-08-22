@@ -92,7 +92,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7554929530955335492}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a5d9506a5a3e155468c557396a2e8316, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7dc13dd9e04f0c479be43692175c1db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolMaterial: {fileID: 2100000, guid: 8756e9fe96e46094c84d81de3dcaf84a, type: 2}
+  coolMaterial: {fileID: 2100000, guid: 6a6f2a9b2cc73dc469252cbb568f9815, type: 2}
   lavaMaterial: {fileID: 2100000, guid: fa1186e9afc21ae4cae53f3425557262, type: 2}
   platformRenderer: {fileID: 7554929530955335489}
   boxCollider: {fileID: 7554929530955335490}
