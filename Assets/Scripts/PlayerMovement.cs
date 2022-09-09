@@ -51,8 +51,8 @@ public class PlayerMovement : MonoBehaviour
 		if (Input.GetKeyDown("space") && Physics.CheckSphere(groundCheck.position, 0.65f, ground) && !PlayerDeath.dead)
 			velocity.y = jumpForce;
 
-		velocity.x = Input.GetKey("a") && !PlayerDeath.dead ? speed * -1 : Input.GetKey("d") && !PlayerDeath.dead ? speed : velocity.x / (1 + decSpeed * Time.deltaTime);
-		velocity.z = Input.GetKey("s") && !PlayerDeath.dead ? speed * -1 : Input.GetKey("w") && !PlayerDeath.dead ? speed : velocity.z / (1 + decSpeed * Time.deltaTime);
+		velocity.x = (Input.GetKey("a") || Input.GetKey("j")) && !PlayerDeath.dead ? speed * -1 : (Input.GetKey("d") || Input.GetKey("l")) && !PlayerDeath.dead ? speed : velocity.x / (1 + decSpeed * Time.deltaTime);
+		velocity.z = (Input.GetKey("s") || Input.GetKey("k")) && !PlayerDeath.dead ? speed * -1 : (Input.GetKey("w") || Input.GetKey("i")) && !PlayerDeath.dead ? speed : velocity.z / (1 + decSpeed * Time.deltaTime);
 
 		// update rigid body velocity
 		body.velocity = velocity;
